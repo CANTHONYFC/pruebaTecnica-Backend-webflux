@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  # Servicio de Configuracion
+  servicioconfigserver:
+    container_name: servicioconfigserver
+    build: ./springboot-servicio-config-server
+    ports:
+      - "8888:8080"
+  servicioeurekaserver:
+    container_name: servicioeurekaserver
+    build: ./springboot-servicio-eureka-server
+    ports:
+      - "8761:8080"
+  serviciousuarios:
+    container_name: serviciousuarios
+    build: ./springboot-servicio-usuarios
+    ports:
+      - "8000:8080"
+  # Servicio de la primera aplicación Spring Boot
+  servicioproducto:
+    container_name: servicioproducto
+    build: ./springboot-servicio-producto
+    ports:
+      - "8001:8080"
+
+  # Servicio de la segunda aplicación Spring Boot
+  serviciooauth:
+    container_name: serviciooauth
+    build: ./springboot-servicio-oauth
+    ports:
+      - "8002:8080"
+  # Servicio de la segunda aplicación Spring Boot
+  gatewayserver:
+    container_name: gatewayserver
+    build: ./springboot-servicio-gateway-server
+    ports:
+      - "8090:8080"
